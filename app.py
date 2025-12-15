@@ -1,3 +1,5 @@
+import json
+
 def text_to_signs(text):
     words = clean_and_split(text)
     words = remove_stopwords(words)
@@ -5,7 +7,7 @@ def text_to_signs(text):
     signs = []
     for word in words:
         if word in SIGN_DICT:
-            signs.append(SIGN_DICT[word])
+          signs.append(SIGN_DICT[word]["file"])
 
     return signs
 
