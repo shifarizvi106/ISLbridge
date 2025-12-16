@@ -1,4 +1,4 @@
-
+/* ISL Bridge - Clean & Human */
 * {
     margin: 0;
     padding: 0;
@@ -6,403 +6,325 @@
 }
 
 body {
-    font-family: 'Times New Roman', sans-serif;
-    line-height: 1.6;
+    font-family: 'Times New Roman', serif;
+    background: #F7F6D3;
     color: #333;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
+    line-height: 1.5;
+    padding: 20px;
 }
 
+/* Main container */
 .container {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
 }
 
-/
+/* Header - The introduction */
 header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: #ffd48f;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-h1 i {
-    color:#4a3621;
-}
-
-.subtitle {
-    color: #4d2810;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
-
-.app-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-}
-
-section {
     background: white;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+    border: 2px solid #B8DB80;
 }
 
-h2 {
-    color: #b59a6d;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
+h1 {
+    color: #333;
+    margin-bottom: 10px;
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.subtitle {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.project-info {
+    background: #FFE4EF;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #F39EB6;
+    margin-top: 15px;
+}
+
+/* Input area - Where the magic starts */
+.input-area {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
 }
 
 textarea {
     width: 100%;
     padding: 15px;
-    border: 2px solid #ddd;
+    border: 2px solid #E0DFC5;
     border-radius: 8px;
-    font-size: 16px;
     font-family: inherit;
+    font-size: 1rem;
+    background: #F7F6D3;
+    min-height: 100px;
+    margin-bottom: 15px;
     resize: vertical;
-    transition: border-color 0.3s;
 }
 
 textarea:focus {
     outline: none;
-    border-color: #b59a6b;
+    border-color: #F39EB6;
+    background: white;
 }
 
-.button-group {
+.buttons {
     display: flex;
     gap: 15px;
 }
 
-.btn-primary, .btn-secondary {
-    padding: 12px 24px;
+button {
+    padding: 12px 20px;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    font-family: inherit;
+    font-size: 1rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s;
+    transition: 0.2s;
 }
 
-.btn-primary {
-    background: #b59a6b;
-    color: white;
+.translate-btn {
+    background: #B8DB80;
+    color: #333;
     flex: 2;
 }
 
-.btn-primary:hover:not(:disabled) {
-    background: #b98429;
-    transform: translateY(-2px);
+.translate-btn:hover:not(:disabled) {
+    background: #A5C76E;
 }
 
-.btn-secondary {
-    background: #a15b1f;
-    color: white;
+.clear-btn {
+    background: #FFE4EF;
+    color: #333;
+    border: 1px solid #F39EB6;
     flex: 1;
 }
 
-.btn-secondary:hover:not(:disabled) {
-    background: #a15b1f;
+.clear-btn:hover:not(:disabled) {
+    background: #F9D4E3;
 }
 
 button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+    opacity: 0.5;
+    cursor: wait;
+}
 
-
-/* Avatar Section */
-.avatar-stage {
-    background: #6892b0;
+/* Avatar - Our sign language performer */
+.avatar-area {
+    background: white;
+    padding: 25px;
     border-radius: 10px;
-    padding: 30px;
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-    border: 2px dashed #ddd;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
 .status {
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
     margin: 10px 0;
-    transition: all 0.3s;
+    font-weight: bold;
 }
 
-.status-ready {
-    background: #d5f4e6;
-    color: #27ae60;
-    border: 2px solid #a3e4d7;
+.ready { background: #E8F7D0; color: #4A7C1F; border: 2px solid #B8DB80; }
+.processing { background: #FFE4EF; color: #B84A6E; border: 2px solid #F39EB6; }
+
+.avatar-box {
+    background: #F7F6D3;
+    border: 2px solid #E0DFC5;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0;
+    min-height: 300px;
 }
 
-.status-processing {
-    background: #fff3cd;
-    color: #856404;
-    border: 2px solid #ffeaa7;
-}
-
-.status-success {
-    background: #d4edda;
-    color: #155724;
-    border: 2px solid #c3e6cb;
-}
-
-.status-error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 2px solid #f5c6cb;
-}
-
-/* Avatar Styling */
-.avatar-container {
+/* The avatar itself - simple and clear */
+.avatar {
     position: relative;
-    width: 200px;
-    height: 250px;
+    width: 180px;
+    height: 240px;
+    margin: 0 auto;
 }
 
-.avatar-head {
-    width: 80px;
-    height: 80px;
-    background: #ffccbc;
+.head {
+    width: 70px;
+    height: 70px;
+    background: #FFCCBC;
     border-radius: 50%;
     position: absolute;
     top: 20px;
-    left: 60px;
-    border: 3px solid #ffab91;
+    left: 55px;
+    border: 2px solid #F39EB6;
 }
 
-.avatar-face {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.avatar-eye {
-    width: 15px;
-    height: 15px;
+.eye {
+    width: 12px;
+    height: 12px;
     background: #333;
     border-radius: 50%;
     position: absolute;
-    top: 30px;
+    top: 25px;
 }
 
-.avatar-eye.left {
-    left: 20px;
-}
+.left-eye { left: 18px; }
+.right-eye { right: 18px; }
 
-.avatar-eye.right {
-    right: 20px;
-}
-
-.avatar-mouth {
-    width: 30px;
-    height: 5px;
+.mouth {
+    width: 25px;
+    height: 4px;
     background: #333;
-    border-radius: 5px;
+    border-radius: 2px;
     position: absolute;
     bottom: 20px;
-    left: 25px;
+    left: 22px;
 }
 
-.avatar-body {
-    width: 100px;
-    height: 100px;
-    background: #3498db;
-    border-radius: 10px;
+.body {
+    width: 90px;
+    height: 90px;
+    background: #B8DB80;
+    border-radius: 8px;
     position: absolute;
-    top: 100px;
-    left: 50px;
+    top: 90px;
+    left: 45px;
 }
 
-.avatar-arm {
-    width: 20px;
-    height: 60px;
-    background: #ffccbc;
-    position: absolute;
-    top: 100px;
-}
-
-.avatar-arm.left {
-    left: 30px;
-    transform: rotate(30deg);
-}
-
-.avatar-arm.right {
-    right: 30px;
-    transform: rotate(-30deg);
-}
-
-.avatar-hand {
-    width: 30px;
-    height: 30px;
-    background: #ffab91;
+.hand {
+    width: 25px;
+    height: 25px;
+    background: #F39EB6;
     border-radius: 50%;
     position: absolute;
-    transition: all 0.5s ease;
+    top: 140px;
+    transition: all 0.3s;
 }
 
-.avatar-hand.left {
-    top: 150px;
-    left: 15px;
-}
+.left-hand { left: 20px; }
+.right-hand { right: 20px; }
 
-.avatar-hand.right {
-    top: 150px;
-    right: 15px;
-}
-
-/* Animation Classes */
-.avatar-wave {
-    animation: wave 2s ease-in-out;
-    transform-origin: bottom center;
+/* Animations - how the hands move */
+.waving {
+    animation: wave 2s ease;
 }
 
 @keyframes wave {
     0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-30deg); }
     50% { transform: rotate(30deg); }
-    75% { transform: rotate(-15deg); }
 }
 
-.avatar-thank-you {
-    animation: thankYou 1.5s ease;
+.thanking {
+    animation: thank 1.5s ease;
 }
 
-@keyframes thankYou {
-    0% { transform: translateY(0); }
+@keyframes thank {
+    0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
-}
-
-.avatar-fingerspell {
-    animation: fingerspell 0.8s infinite alternate;
-}
-
-@keyframes fingerspell {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.2); }
 }
 
 .sign-display {
-    margin-top: 180px;
-    text-align: center;
+    margin-top: 160px;
     padding: 15px;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    min-width: 200px;
+    border: 1px solid #E0DFC5;
 }
 
 .current-sign {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: #333;
     margin-bottom: 5px;
 }
 
-.sign-description {
-    font-size: 14px;
-    color: #7f8c8d;
+.sign-meaning {
+    color: #666;
     font-style: italic;
 }
 
-/* Dictionary Section */
+/* Instructions - how to use it */
+.instructions {
+    background: #FFE4EF;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border-left: 4px solid #F39EB6;
+}
+
+.instructions ol {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/* Dictionary - what we know */
+.dictionary {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
 .sign-list {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
 
 .sign-item {
     padding: 15px;
-    background: #f8f9fa;
+    background: #F7F6D3;
     border-radius: 8px;
-    border-left: 4px solid #3498db;
     cursor: pointer;
-    transition: all 0.3s;
+    border-left: 4px solid #B8DB80;
+    transition: 0.2s;
 }
 
 .sign-item:hover {
-    background: #e3f2fd;
-    transform: translateX(5px);
+    background: #FFE4EF;
+    border-left-color: #F39EB6;
 }
 
-.sign-item strong {
-    color: #2c3e50;
+.sign-name {
+    color: #333;
     display: block;
     margin-bottom: 5px;
 }
 
-.sign-duration {
+.sign-time {
     float: right;
-    background: #3498db;
-    color: white;
+    background: #B8DB80;
+    color: #333;
     padding: 2px 8px;
     border-radius: 12px;
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
+/* Limitations - keeping it real */
+.limitations {
+    background: #FFE4EF;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 25px;
+    border-left: 4px solid #F39EB6;
+}
 
-
-/* Instructions */
-.instructions ol {
+.limitations ul {
     margin-left: 20px;
     margin-top: 10px;
 }
 
-.instructions li {
-    margin-bottom: 8px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .app-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .button-group {
-        flex-direction: column;
-    }
-    
-    .sign-list {
-        grid-template-columns: 1fr;
-    }
-    
-    .avatar-stage {
-        padding: 15px;
-    }
+/* Mobile Version */
+@media (max-width: 600px) {
+    body { padding: 10px; }
+    header, .input-area, .avatar-area, .dictionary { padding: 20px; }
+    .buttons { flex-direction: column; }
+    .sign-list { grid-template-columns: 1fr; }
+    .avatar-box { padding: 20px; }
 }
