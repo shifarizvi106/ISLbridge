@@ -3,27 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISL-BRIDGE</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ISL Bridge - Text to Indian Sign Language</title>
 </head>
-
 <body>
     <div class="container">
-        <h1>ISL-BRIDGE</h1>
-        <p>Let's Start Signing!</p>
+        <header>
+            <h1><i class="fas fa-hands"></i> ISL Communication Bridge</h1>
+            <p class="subtitle">Words to Sign Language</p>
+            <div class="project-info">
+                <p>A project to bridge communication gaps for the Deaf community in India</p>
+            </div>
+        </header>
 
-        <form id="startLearning">
-            <label for="expression">Start Learning</label><br><br>
-            
-            <input 
-                type="text" 
-                id="expression" 
-                placeholder="Enter expression or word">
-            
-            <br><br>
-            
-            <button type="submit">Sign</button>
-        </form>
-    </div>
+        <main>
+            <div class="app-container">
+                <section class="input-section">
+                    <h2><i class="fas fa-keyboard"></i> Enter Text to Translate</h2>
+                    <div class="input-group">
+                        <textarea 
+                            id="text-input" 
+                            placeholder="Type English text here."
+                            rows="3"></textarea>
+                        <div class="button-group">
+                            <button id="translate-btn" class="btn-primary">
+                                <i class="fas fa-hands"></i> Translate to ISL
+                            </button>
+                            <button id="clear-btn" class="btn-secondary">
+                                <i class="fas fa-eraser"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    
+                  
+                </section>
+
+                <section class="avatar-section">
+                    <h2><i class="fas fa-user"></i> ISL Interpreter</h2>
+                    <div id="status" class="status status-ready">Ready for input</div>
+                    
+                    <div id="avatar-container" class="avatar-stage">
+                    
+                    </div>
+                    
+                    <div class="instructions">
+                        <h3><i class="fas fa-lightbulb"></i> How It Works:</h3>
+                        <ol>
+                            <li>Enter English text in the box above</li>
+                            <li>The system translates it to ISL sign sequences</li>
+                            <li>The avatar performs each sign with proper timing</li>
+                            <li>Watch the hands and read the sign descriptions and voila! </li>
+                        </ol>
+                    </div>
+                </section>
+
+               
+                <section class="dictionary-section">
+                    <h2><i class="fas fa-book"></i> Available ISL Signs</h2>
+                    <p class="section-info">Click any sign below to see it demonstrated :</p>
+                    <ul id="animation-list" class="sign-list">
+                       
+                    </ul>
+                    
+                  
+                </section>
+            </div>
+        </main>
+    <script src="isl-dictionary.js"></script>
+    <script src="avatar-engine.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
