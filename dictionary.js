@@ -1,149 +1,159 @@
+/* ==========================================================
+   ISL Dictionary
+   ========================================================== */
 
 const ISLDictionary = {
-    
-    "hello": {
+    hello: {
         description: "Open hand moving from forehead outward in salutation",
         animation: "wave_hello",
-        duration: 2000, 
-        handShape: "open",
+        duration: 2000,
         requiresTwoHands: false
     },
-    
+
     "thank you": {
         description: "Flat hand touches chin then moves forward",
         animation: "thank_you",
         duration: 1500,
-        handShape: "flat",
         requiresTwoHands: false
     },
-    
-    "how": {
+
+    how: {
         description: "Both 'Y' handshapes rotating alternately",
         animation: "how_sign",
         duration: 1800,
-        handShape: "Y",
         requiresTwoHands: true
     },
-    
-    "what": {
-        description: "Both '5' hands moving outward with questioning expression",
+
+    what: {
+        description: "Both open hands moving outward in a questioning motion",
         animation: "what_sign",
         duration: 1600,
-        handShape: "five",
         requiresTwoHands: true
     },
-    
-    "I": {
-        description: "Index finger pointing to chest",
+
+    i: {
+        description: "Index finger pointing to the chest",
         animation: "point_self",
         duration: 1000,
-        handShape: "index",
         requiresTwoHands: false
     },
-    
-    "you": {
+
+    you: {
         description: "Index finger pointing forward",
         animation: "point_forward",
         duration: 1000,
-        handShape: "index",
         requiresTwoHands: false
     },
 
-  "he": {
-        description: "Twirl mustache and then point with entire palm",
-        animation: "twirl-mustache",
+    he: {
+        description: "Pointing outward to indicate a third person",
+        animation: "point_forward",
         duration: 1000,
-        handShape: "twirl",
         requiresTwoHands: false
     },
-    
-   
-    "water": {
-        description: "Letter 'W' tapped on chin",
+
+    water: {
+        description: "Letter 'W' tapped on the chin",
         animation: "water_sign",
         duration: 1200,
-        handShape: "W",
         requiresTwoHands: false
     },
-    
-    "help": {
-        description: "Closed fist on open palm, both moving upward",
+
+    help: {
+        description: "Closed fist on open palm, both hands moving upward",
         animation: "help_sign",
         duration: 1800,
-        handShape: "fist",
         requiresTwoHands: true
     },
-    
-   
-    "doctor": {
-        description: "Letter 'D' tapped on wrist (pulse point)",
+
+    doctor: {
+        description: "Letter 'D' tapped on the wrist (pulse point)",
         animation: "doctor_sign",
         duration: 1500,
-        handShape: "D",
         requiresTwoHands: false
     }
 };
-
+function createFingerspellSign(word) {
+    return {
+        description: `Fingerspelling "${word}"`,
+        animation: "fingerspell",
+        duration: word.length * 800,
+        requiresTwoHands: false,
+        word
+    };
+}
 
 class ISLTranslator {
-    constructor() {
-        this.dictionary = ISLDictionary;
+    constructor(dictionary = ISLDictionary) {
+        this.dictionary = dictionary;
     }
-    
-   
-    translateToISL(text) {
+
+    /**
+     * Converts plain text into ISL sign objects
+     */
+    translateToISL(text = "") {
         console.log(`Translating: "${text}"`);
-        
-        
-        const cleanText = text.toLowerCase().trim();
-        
-       
-        const words = cleanText.split(/\s+/);
-        
-       
-        const animationSequence = [];
-        
-        for (const word of words) {
-            if (this.dictionary[word]) {
-                animationSequence.push(this.dictionary[word]);
-                console.log(`✓ Found sign for: "${word}"`);
-            } else {
-                
-                console.log(`✗ No sign for: "${word}" - will fingerspell`);
-                animationSequence.push({
-                    type: "fingerspell",
-                    word: word,
-                    duration: word.length * 800  // Estimate
-                });
-            }
-        }
-        
-       
-        return this.applyGrammarRules(animationSequence);
+
+        const words = this._cleanAndSplit(text);
+        const sequence = words.map(word => this._resolveWord(word));
+
+        return this.applyGrammarRules(sequence);
     }
-    
-    
-    applyGrammarRules(sequence) {
-       
-        if (sequence.length >= 3) {
-           
-            const firstWord = sequence[0].animation;
-            if (firstWord === "point_self") {  
-                const reordered = [sequence[0], ...sequence.slice(2), sequence[1]];
-                console.log("Applied ISL grammar reordering");
-                return reordered;
-            }
+
+    /**
+     * Lowercase, trim, split safely
+     */
+    _cleanAndSplit(text) {
+        return text
+            .toLowerCase()
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean);
+    }
+
+    /**
+     * Returns either a dictionary sign or a fingerspelling sign
+     */
+    _resolveWord(word) {
+        const sign = this.dictionary[word];
+
+        if (sign) {
+            console.log(`✓ Found ISL sign: "${word}"`);
+            return sign;
         }
+
+        console.log(`✗ No sign for "${word}" — fingerspelling`);
+        return createFingerspellSign(word);
+    }
+
+    /**
+     * Very simple ISL grammar rule (extensible later)
+     */
+    applyGrammarRules(sequence) {
+        if (sequence.length < 3) return sequence;
+
+        const firstSign = sequence[0];
+
+        if (firstSign.animation === "point_self") {
+            console.log("Applied ISL grammar reordering");
+            return [
+                sequence[0],
+                ...sequence.slice(2),
+                sequence[1]
+            ];
+        }
+
         return sequence;
     }
-    
-    
-    calculateTotalDuration(sequence) {
-        return sequence.reduce((total, sign) => total + (sign.duration || 1000), 0);
+
+    /**
+     * Utility for timelines / previews
+     */
+    calculateTotalDuration(sequence = []) {
+        return sequence.reduce(
+            (total, sign) => total + (sign.duration || 1000),
+            0
+        );
     }
 }
 
-
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { ISLDictionary, ISLTranslator };
-}
