@@ -163,5 +163,9 @@ class ISLAvatar {
         this.signDisplay.textContent = 'Ready';
         this.signDescription.textContent = 'Enter text to begin';
         this.isAnimating = false;
+
+        this.signDisplay = this.container.querySelector('.current-sign');
+this.signDescription = this.container.querySelector('.sign-description');
+
     }
 }
