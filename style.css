@@ -1,330 +1,90 @@
-/* ISL Bridge - Clean & Human */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Times New Roman', serif;
-    background: #F7F6D3;
-    color: #333;
-    line-height: 1.5;
-    padding: 20px;
-}
-
-/* Main container */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Header - The introduction */
-header {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    text-align: center;
-    border: 2px solid #B8DB80;
-}
-
-h1 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    color: #666;
-    font-style: italic;
-    margin-bottom: 15px;
-}
-
-.project-info {
-    background: #FFE4EF;
-    padding: 15px;
-    border-radius: 8px;
-    border-left: 4px solid #F39EB6;
-    margin-top: 15px;
-}
-
-/* Input area - Where the magic starts */
-.input-area {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-}
-
-textarea {
-    width: 100%;
-    padding: 15px;
-    border: 2px solid #E0DFC5;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 1rem;
-    background: #F7F6D3;
-    min-height: 100px;
-    margin-bottom: 15px;
-    resize: vertical;
-}
-
-textarea:focus {
-    outline: none;
-    border-color: #F39EB6;
-    background: white;
-}
-
-.buttons {
-    display: flex;
-    gap: 15px;
-}
-
-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.translate-btn {
-    background: #B8DB80;
-    color: #333;
-    flex: 2;
-}
-
-.translate-btn:hover:not(:disabled) {
-    background: #A5C76E;
-}
-
-.clear-btn {
-    background: #FFE4EF;
-    color: #333;
-    border: 1px solid #F39EB6;
-    flex: 1;
-}
-
-.clear-btn:hover:not(:disabled) {
-    background: #F9D4E3;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: wait;
-}
-
-/* Avatar - Our sign language performer */
-.avatar-area {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.status {
-    padding: 10px;
-    border-radius: 6px;
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-.ready { background: #E8F7D0; color: #4A7C1F; border: 2px solid #B8DB80; }
-.processing { background: #FFE4EF; color: #B84A6E; border: 2px solid #F39EB6; }
-
-.avatar-box {
+/* Avatar Stage */
+.avatar-stage {
     background: #F7F6D3;
     border: 2px solid #E0DFC5;
     border-radius: 10px;
     padding: 30px;
     margin: 20px 0;
     min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* The avatar itself - simple and clear */
-.avatar {
+/* Avatar Container */
+.avatar-container {
     position: relative;
-    width: 180px;
-    height: 240px;
-    margin: 0 auto;
+    width: 200px;
+    height: 260px;
 }
 
-.head {
+/* Head */
+.avatar-head {
     width: 70px;
     height: 70px;
     background: #FFCCBC;
     border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    left: 55px;
+    margin: 0 auto;
     border: 2px solid #F39EB6;
 }
 
-.eye {
-    width: 12px;
-    height: 12px;
-    background: #333;
-    border-radius: 50%;
-    position: absolute;
-    top: 25px;
-}
-
-.left-eye { left: 18px; }
-.right-eye { right: 18px; }
-
-.mouth {
-    width: 25px;
-    height: 4px;
-    background: #333;
-    border-radius: 2px;
-    position: absolute;
-    bottom: 20px;
-    left: 22px;
-}
-
-.body {
+/* Body */
+.avatar-body {
     width: 90px;
-    height: 90px;
+    height: 100px;
     background: #B8DB80;
-    border-radius: 8px;
-    position: absolute;
-    top: 90px;
-    left: 45px;
+    border-radius: 10px;
+    margin: 10px auto 0;
+    position: relative;
 }
 
-.hand {
+/* Hands */
+.avatar-hand {
     width: 25px;
     height: 25px;
     background: #F39EB6;
     border-radius: 50%;
     position: absolute;
-    top: 140px;
-    transition: all 0.3s;
+    top: 40px;
+    transition: transform 0.3s ease;
 }
 
-.left-hand { left: 20px; }
-.right-hand { right: 20px; }
+.avatar-hand.left {
+    left: -20px;
+}
 
-/* Animations - how the hands move */
-.waving {
-    animation: wave 2s ease;
+.avatar-hand.right {
+    right: -20px;
+}
+
+.avatar-wave {
+    animation: wave 1.5s ease-in-out;
 }
 
 @keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(30deg); }
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(25deg); }
+    100% { transform: rotate(0deg); }
 }
 
-.thanking {
-    animation: thank 1.5s ease;
+.avatar-thank-you {
+    animation: thank 1.2s ease-in-out;
 }
 
 @keyframes thank {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
 }
 
-.sign-display {
-    margin-top: 160px;
-    padding: 15px;
-    background: white;
-    border-radius: 8px;
-    border: 1px solid #E0DFC5;
+.avatar-fingerspell {
+    animation: pulse 0.6s ease-in-out infinite;
 }
 
-.current-sign {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
 }
 
-.sign-meaning {
-    color: #666;
-    font-style: italic;
-}
 
-/* Instructions - how to use it */
-.instructions {
-    background: #FFE4EF;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    border-left: 4px solid #F39EB6;
-}
-
-.instructions ol {
-    margin-left: 20px;
-    margin-top: 10px;
-}
-
-/* Dictionary - what we know */
-.dictionary {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-}
-
-.sign-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.sign-item {
-    padding: 15px;
-    background: #F7F6D3;
-    border-radius: 8px;
-    cursor: pointer;
-    border-left: 4px solid #B8DB80;
-    transition: 0.2s;
-}
-
-.sign-item:hover {
-    background: #FFE4EF;
-    border-left-color: #F39EB6;
-}
-
-.sign-name {
-    color: #333;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.sign-time {
-    float: right;
-    background: #B8DB80;
-    color: #333;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-}
-
-/* Limitations - keeping it real */
-.limitations {
-    background: #FFE4EF;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 25px;
-    border-left: 4px solid #F39EB6;
-}
-
-.limitations ul {
-    margin-left: 20px;
-    margin-top: 10px;
-}
-
-/* Mobile Version */
-@media (max-width: 600px) {
-    body { padding: 10px; }
-    header, .input-area, .avatar-area, .dictionary { padding: 20px; }
-    .buttons { flex-direction: column; }
-    .sign-list { grid-template-columns: 1fr; }
-    .avatar-box { padding: 20px; }
-}
